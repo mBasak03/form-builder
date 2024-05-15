@@ -23,9 +23,11 @@ model Form{
   description String @default("")
   // form data like name, email, phonenumber input fields etc...
   content String @default("[]")
+  visits Int @default(0)
   submissions Int @default(0)
   shareUrl String @default(uuid())
   FormSubmissions FormSubmissions[]
+  @@unique([name, userId])
 }
 model FormSubmissions{
   id Int @id @default(autoincrement())
